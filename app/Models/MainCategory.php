@@ -28,7 +28,7 @@ class MainCategory extends Model
 
     public function getPhotoAttribute($val)
     {
-        return ($val !== null) ? asset('assets/' . $val) : "";
+        return ($val !== null) ? asset('public/assets/' . $val) : "";
 
     }
 
@@ -54,7 +54,11 @@ class MainCategory extends Model
         return $this -> hasMany(SubCategory::class,'category_id','id');
     }
 
+    public function category()
+    {
 
+        return $this->belongsTo('App\Models\MainCategory', 'category_id', 'id');
+    }
 
     public function vendors(){
 
